@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="fr">
+
+<!-- version 1.0 -->
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>ESUP-Days 19 - Agimus-NG</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme"> 
+    <link rel="stylesheet" href="css/esup-theme.css">
+
+    <link rel="stylesheet" href="plugin/highlight/default.min.css">
+
+  </head>
+
+  <body>
+
+    <div class="header header-left"><span>ESUP-Days #19</span><span>(05.02.2015 @Paris)</span></div>
+
+    <div class="reveal esup">
+
+      <div class="slides">
+
+        <section class="main-title">
+          <header>
+            <h1><img src="./img/logo-esup--NEW.png" alt="ESUP-Portail" class="logo-img"></h1>
+            <h5 class="event shadow">
+              <span class="event-name">ESUP-Days #19</span>
+              <span class="event-date">06.02.2015</span>
+              <span class="event-location">Paris</span>
+            </h5>
+          </header>
+          <div class="presentation-title shadow">
+            <h3>Retour Atelier Agimus-NG</h3>
+            <ul class="presenters">
+              <li><span class="author">Nicolas CAN</span><span class="logo"><img class="logo-img" src="./img/logo-esup--NEW.png" alt="" style="background-color: #FFF;"></span></li>
+              <li><span class="author">Guillaume Colson</span><span class="logo"><img class="logo-img" src="./img/logo-esup--NEW.png" alt="" style="background-color: #FFF;"></span></li>
+            </ul>
+          </div>
+          <footer>
+            <img src="./img/communaute.png" alt="">
+          </footer>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2 class="shadow">Sommaire</h2>
+          </header>
+          <div class="slide-content">
+          	<p>&nbsp;</p>
+            <ol>
+              <li>Rappel : Objectifs et architecture envisag&eacute;e</li>
+              <li>&Eacute;tat d'avancement</li>
+              <li>Prochaines &eacute;tapes</li>
+            </ol>
+            <p>&nbsp;</p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section class="divider">
+          <header>
+            <h2 class="shadow">Retour Atelier Agimus-NG</h2>
+            <img class="cloud" src="./img/cloud.png" alt="">
+            <h3>Rappel : Objectifs et architecture envisag&eacute;e</h3>
+          </header>
+          <footer>
+            <img src="./img/communaute.png" alt="">
+          </footer>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>Rappel : Objectifs et architecture envisag&eacute;e</h2>
+            <h3 class="shadow">&gt; Objectifs</h3>
+          </header>
+          <div class="slide-content">
+          	<p>&nbsp;</p>
+            <ul>
+              <li>D&eacute;finition du besoin d'indicateurs dans nos &eacute;tablissements</li>
+              <li>&Eacute;tablir le cadrage pour le changement vers Agimus-NG</li>
+              <li>R&eacute;aliser et suivre la progression des travaux autour de l'outil</li>
+              <li>Tester et impl&eacute;menter la solution</li>
+              <li>Faire la promotion et le suivi de Agimus-NG</li>
+            </ul>
+          	<p>&nbsp;</p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>Rappel : Objectifs et architecture envisag&eacute;e</h2>
+            <h3 class="shadow">&gt; Architecture envisag&eacute;e</h3>
+          </header>
+          <div class="slide-content">
+            <p>
+              Bas&eacute; sur :
+              <ul>
+              	<li>Logstash pour la collecte et l'enrichissement</li>
+              	<li>Elasticsearch pour le stockage et l'indexation</li>
+              	<li>un outil d&eacute;velopp&eacute; en interne pour les tableaux de bords et visualisation des indicateurs</li>
+              </ul>
+            </p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section class="divider">
+          <header>
+            <h2 class="shadow">Retour Atelier Agimus-NG</h2>
+            <img class="cloud" src="./img/cloud.png" alt="">
+            <h3>&Eacute;tat d'avancement</h3>
+          </header>
+          <footer>
+            <img src="./img/communaute.png" alt="">
+          </footer>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>&Eacute;tat d'avancement</h2>
+            <h3 class="shadow">&gt; Collectes de données</h3>
+          </header>
+          <div class="slide-content">
+            <p>
+              La collecte de donn&eacute;es a commenc&eacute; en test &agrave; :
+              <ul>
+              	<li>L'Universit&eacute; de Lorraine</li>
+              	<li>L'Universit&eacute; de Lille 1</li>
+              </ul>              
+            </p>
+            <p>
+              Elle commencera sous peu &agrave; :
+              <ul>
+              	<li>L'Universit&eacute; Paris 1</li>
+              	<li>L'Universit&eacute; Fran&ccedil;ois Rabelais (Tours)</li>
+              </ul>              
+            </p>
+            <p>Les donn&eacute;es dont issues de l'ENT et de Moodle</p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>&Eacute;tat d'avancement</h2>
+            <h3 class="shadow">&gt; Interface</h3>
+          </header>
+          <div class="slide-content">
+          	<p>&nbsp;</p>
+            <ul>
+              <li>Suite &agrave; la formation Elasticsearch, remise en cause d'un d&eacute;veloppement complet</li>
+              <li>Utilisation de Kibana 4 pour le rendu</li>
+              <li>Avec toujours une surcouche d'authentification</li>
+            </ul>
+          	<p>&nbsp;</p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>&Eacute;tat d'avancement</h2>
+            <h3 class="shadow">&gt; Premiers r&eacute;sultats</h3>
+          </header>
+          <div class="slide-content">
+            <p>&Eacute;volution du LDAP
+              <div class="gallery-item">
+                <img src="img/LDAP.png" alt=" !!! LDAP a FAIRE !!!">
+                <span>&Eacute;volution de la population LDAP</span>
+              </div>
+            </p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>&Eacute;tat d'avancement</h2>
+            <h3 class="shadow">&gt; Premiers r&eacute;sultats</h3>
+          </header>
+          <div class="slide-content">
+            <p>Hits par population (total)
+              <div class="gallery-item">
+                <img src="img/hits_par_EPA_total.png" alt="hits pour le personnel">
+                <span>Hits r&eacute;partis par EduPersonAffiliation</span>
+              </div>
+            </p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>&Eacute;tat d'avancement</h2>
+            <h3 class="shadow">&gt; Premiers r&eacute;sultats</h3>
+          </header>
+          <div class="slide-content">
+            <p>Hits par population (temporel)
+              <div class="gallery-item">
+                <img src="img/hits_par_EPA_temporel.png" alt="hits pour le personnel dans le temps">
+                <span>Hits r&eacute;partis par EduPersonAffiliation et par date</span>
+              </div>
+            </p>
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section class="divider">
+          <header>
+            <h2 class="shadow">Retour Atelier Agimus-NG</h2>
+            <img class="cloud" src="./img/cloud.png" alt="">
+            <h3>Prochaines &eacute;tapes</h3>
+          </header>
+          <footer>
+            <img src="./img/communaute.png" alt="">
+          </footer>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section>
+          <header>
+            <h2>Prochaines &eacute;tapes</h2>
+          </header>
+          <div class="slide-content">
+          	<p>&nbsp;</p>
+            <ul>
+              <li>Compl&eacute;ter le nombre de sites de test</li>
+              <li>Documentation sur la mise en place d'un entrep&ocirc;t</li>
+              <li>Permi&egrave;re version de l'interface</li>
+              <li>Workshop Elasticsearch - Agimus-NG pour la communaut&eacute; ESUP</li>
+            </ul>
+            <p>&nbsp;</p> 
+          </div>
+        </section>
+
+        <!--///////////////////////////////////////////-->
+
+        <section class="divider">
+          <header>
+            <h2 class="shadow">Retour Atelier Agimus-NG</h2>
+            <img class="cloud" src="./img/cloud.png" alt="">
+            <h3>Des questions ?</h3>
+          </header>
+          <footer>
+            <img src="./img/communaute.png" alt="">
+          </footer>
+        </section>
+
+
+        <!--///////////////////////////////////////////-->
+
+      </div>
+    </div>
+
+    <div class="footer footer-left"><img src="img/logo-esup--NEW.png"><span>Copyright 2015 &copy;</span></div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      Reveal.initialize({
+        margin: 0,
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: 'simple', // available themes are in /css/theme
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        dependencies: [ 
+            // Cross-browser element.classList (esp needed on safari 4.0.5)
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+            // Syntax highlight for <pre> elements
+                  { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+
+            ],
+        });
+
+        function createSingletonNode( container, tagname, classname, innerHTML ) {
+
+          var node = container.querySelector( '.' + classname );
+          if( !node ) {
+              node = document.createElement( tagname );
+              node.classList.add( classname );
+              if( innerHTML !== null ) {
+                  node.innerHTML = innerHTML;
+              }
+              container.appendChild( node );
+          }
+          return node;
+
+        }
+
+      // From https://github.com/hakimel/reveal.js/pull/56
+      function slidenumber(event){
+        var current_slide = 0;
+
+        var horizontal_slides = document.querySelectorAll( '.reveal .slides>section' );
+        for (var i = 0; i < event.indexh; i++) {
+          // get subslides
+          var subslides = horizontal_slides[i].querySelectorAll('section');
+
+          // if subslides.length is 0, add 1 for horizontal slide, else add subslides.length
+          current_slide += (subslides.length === 0) ? 1 : subslides.length;
+        }
+
+        current_slide += event.indexv+1;
+        return current_slide.toString();
+      }
+
+      function setSlideNb(event) {
+        var dom = createSingletonNode(document.querySelector(".controls"), "div", "slideNb");
+        dom.innerHTML = event.indexh ? event.indexh : '';
+      }
+
+      Reveal.addEventListener('slidechanged', setSlideNb);
+      Reveal.addEventListener('ready', setSlideNb);
+
+    </script>
+
+  </body>
+</html>
