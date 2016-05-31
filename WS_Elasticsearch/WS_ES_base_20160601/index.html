@@ -55,8 +55,8 @@
               <li>Vocabulaire</li>
               <li>Alimenter un index</li>
               <li>Requêter un index</li>
-              <li>Agrégations</li>
               <li>Recherche full-text et pertinence</li>
+              <li>Agrégations</li>
             </ol>
           </div>
         </section>
@@ -234,9 +234,9 @@
             <h3 class="shadow">&gt; Démonstration en REST</h3>
           </header>
           <div class="slide-content">
-            <p>Création automatique des index à l'insertion du premier élément</p>
+            <h4>Création automatique des index à l'insertion du premier élément</h4>
               <div class="gallery-item" style="width: 65%">
-                <p><pre>curl -XPUT "http://localhost:9200/fr/user/esup-1" -d'
+                <p><pre>curl -XPUT "localhost:9200/fr/user/esup-1" -d'
 {
   "email": "guillaume.colson@univ.fr",
   "name": "Guillaume Colson",
@@ -276,8 +276,8 @@
               <h3 class="shadow">&gt; Démonstration en REST</h3>
             </header>
             <div class="slide-content">
-              <p>Création par lot</p>
-                  <p><pre>curl -XPOST "http://localhost:9200/_bulk" --data-binaries'
+              <h4>Création par lot</h4>
+                  <p><pre>curl -XPOST "localhost:9200/_bulk" --data-binaries'
   { "create": { "_index": "us", "_type": "user", "_id": "1" }}
   { "email" : "john@smith.com", "name" : "John Smith", "username" : "@john" }
   { "create": { "_index": "gb", "_type": "user", "_id": "2" }}
@@ -294,7 +294,7 @@
               <h3 class="shadow">&gt; Démonstration en REST</h3>
             </header>
             <div class="slide-content">
-              <p>Création par lot</p>
+              <h4>Création par lot</h4>
                   <p>
                     <pre>
   {
@@ -335,9 +335,9 @@
             <h3 class="shadow">&gt; Démonstration en REST</h3>
           </header>
           <div class="slide-content">
-            <p>Création depuis un fichier</p>
-            <p><a href="tweets.json">fichier json contenant les tweets à importer</a></p>
-                <p><pre>curl -XPOST "http://localhost:9200/_bulk?pretty" --data-binary @./path/to/your/tweets.json
+            <h4>Création depuis un fichier</h4>
+            <p> &gt;<a href="tweets.json"> fichier json contenant les tweets à importer</a></p>
+                <p><pre>curl -XPOST "localhost:9200/_bulk?pretty" --data-binary @./path/to/your/tweets.json
   {
     "took" : 88,
     "errors" : false,
@@ -373,7 +373,7 @@
           <h3 class="shadow">&gt; Démonstration en REST</h3>
         </header>
         <div class="slide-content">
-          <p>État du nœud dans kopf</p>
+          <h4>État du nœud dans kopf</h4>
           <div class="gallery-item" style="width: 100%">
             <img src="./img/index_alimentes.png" alt="3 index créés et alimentés">
             <span>Les 3 index sont créés et ont des documents</span>
@@ -381,39 +381,624 @@
         </div>
       </section>
 
-         <!--///////////////////////////////////////////-->
+      <!--///////////////////////////////////////////-->
 
-        <section class="future" style="top: -316px; display: block;" hidden="">
+      <section style="top: -319px; display: block;" class="divider future" hidden="">
+        <header>
+          <h2 class="shadow">Notions de base</h2>
+          <img class="cloud" src="./cloud.png" alt="">
+          <h3>Requêter un index</h3>
+        </header>
+        <footer>
+          <img src="./communaute.png" alt="">
+        </footer>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Requêter un index</h2>
+          <h3 class="shadow">&gt; Démonstration en REST</h3>
+        </header>
+        <div class="slide-content">
+          <h4>Récupération d'un document spécifique</h4>
+            <div class="gallery-item" style="width: 55%">
+              <p><pre>curl -XGET "localhost:9200/fr/user/esup-1"
+                 </pre>
+                </p>
+            </div>
+            <div class="gallery-item" style="width: 45%">
+              <p>
+                <pre>
+{
+  "_index": "fr",
+  "_type": "user",
+  "_id": "esup-1",
+  "_version": 1,
+  "found": true,
+  "_source": {
+    "email": "guillaume.colson@univ.fr",
+    "name": "Guillaume Colson",
+    "username": "@goyome"
+  }
+}
+                </pre>
+              </p>
+            </div>
+        </div>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Requêter un index</h2>
+          <h3 class="shadow">&gt; Démonstration en REST</h3>
+        </header>
+        <div class="slide-content">
+          <h4>Recherche des documents d'un certain type</h4>
+            <div class="gallery-item" style="width: 55%">
+              <p><pre>curl -XGET "localhost:9200/us/tweet/_search"
+                 </pre>
+                </p>
+            </div>
+            <div class="gallery-item" style="width: 45%">
+              <p>
+                <pre>
+{
+  "took": 7,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 6,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "us",
+        "_type": "tweet",
+        "_id": "14",
+        "_score": 1,
+        "_source": {
+          "date": "2014-09-24",
+          "name": "John Smith",
+          ...
+                </pre>
+              </p>
+            </div>
+        </div>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Requêter un index</h2>
+          <h3 class="shadow">&gt; Démonstration en REST</h3>
+        </header>
+        <div class="slide-content">
+          <h4>Recherche Light</h4>
+            <div class="gallery-item" style="width: 55%">
+              <p><pre>curl -XGET "localhost:9200/_search?q=name:smith"
+                 </pre>
+                </p>
+            </div>
+            <div class="gallery-item" style="width: 45%">
+              <p>
+                <pre>
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 16,
+    "successful": 16,
+    "failed": 0
+  },
+  "hits": {
+    "total": 7,
+    "max_score": 0.4451987,
+    "hits": [
+      {
+        "_index": "us",
+        "_type": "tweet",
+        "_id": "8",
+        "_score": 0.4451987,
+        "_source": {
+          "date": "2014-09-18",
+          "name": "John Smith",
+          "user_id": 1
+        }
+      },
+
+          ...
+                </pre>
+              </p>
+            </div>
+        </div>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Requêter un index</h2>
+          <h3 class="shadow">&gt; Démonstration en REST</h3>
+        </header>
+        <div class="slide-content">
+          <h4>La même recherche en queryDSL <br/>(Domain-Specific Language)</h4>
+            <div class="gallery-item" style="width: 100%">
+              <p><pre>curl -XGET "localhost:9200/_search" -d'
+{
+  "query": {
+    "match": {
+      "name": "smith"
+    }
+  }
+}'
+                 </pre>
+                </p>
+            </div>
+        </div>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <section>
+
           <header>
-            <h2>Mon titre</h2>
-            <h3 class="shadow">&gt; Mon sous-titre</h3>
+            <h2>Requêter un index</h2>
+            <h3 class="shadow">&gt; Démonstration en REST</h3>
           </header>
           <div class="slide-content">
+            <h4>queryDSL pour des recherches plus complexes</h4>
+              <div class="gallery-item" style="width: 60%">
+                <p><pre>curl -XGET "localhost:9200/us,gb/tweet/_search" -d'
+  {
+    "query": {
+      "filtered": {
+        "query": {
+          "match": {
+            "tweet": "elasticsearch"
+          }
+        },
+        "filter": {
+          "range": {
+            "date": {
+              "gte": "2014-09-20"
+            }
+          }
+        }
+      }
+    }
+  }'
+                   </pre>
+                  </p>
+              </div>
+                <div class="gallery-item" style="width: 40%">
+                  <ul>
+                    <li>Query pour rechercher les tweets qui contiennent elasticsearch</li>
+                    <li>Filter pour ne prendre en compte que les tweets postérieurs au 20/09/2014</li>
+                  </ul>
+              </div>
+          </div>
+        </section>
+        <section>
+
+          <header>
+            <h2>Requêter un index</h2>
+            <h3 class="shadow">&gt; Démonstration en REST</h3>
+          </header>
+          <div class="slide-content">
+            <h4>queryDSL permet de faire des recherches plus complexes</h4>
+              <div class="gallery-item" style="width: 100%">
+                <p><pre>...
+"hits": [
+  {
+    "_index": "gb",
+    "_type": "tweet",
+    "_id": "13",
+    "_score": 0.375,
+    "_source": {
+      "date": "2014-09-23",
+      "name": "Mary Jones",
+      "tweet": "So yes, I am an Elasticsearch fanboy",
+      "user_id": 2
+    }
+  },
+  {
+    "_index": "us",
+    "_type": "tweet",
+    "_id": "10",
+    "_score": 0.3125,
+    "_source": {
+      "date": "2014-09-20",
+      "name": "John Smith",
+      "tweet": "Elasticsearch surely is one of the hottest new NoSQL products",
+      "user_id": 1
+    }
+  },
+  ...
+
+                   </pre>
+                  </p>
+              </div>
+          </div>
+        </section>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Requêter un index</h2>
+          <h3 class="shadow">&gt; Démonstration en REST</h3>
+        </header>
+        <div class="slide-content">
+          <h4>Types de requête courants</h4>
+          <ul>
+            <li><strong>match</strong> recherche la valeur dans le champ</li>
+            <li><strong>multi_match</strong> idem mais sur plusieurs champs</li>
+            <li><strong>range</strong> pour les dates et nombres</li>
+            <li><strong>term</strong> recherche exacte de la valeur</li>
+            <li><strong>terms</strong> recherche exacte avec plusieurs valeurs valides</li>
+            <li><strong>exists / missing</strong> existence d'un champ (il ne peut être null)</li>
+            <li><strong>bool</strong> permet d'associer plusieurs autres requêtes</li>
+          </ul>
+        </div>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section style="top: -319px; display: block;" class="divider future" hidden="">
+        <header>
+          <h2 class="shadow">Notions de base</h2>
+          <img class="cloud" src="./cloud.png" alt="">
+          <h3>Recherche plein-texte et pertinence</h3>
+        </header>
+        <footer>
+          <img src="./communaute.png" alt="">
+        </footer>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <section>
+          <header>
+            <h2>Recherche plein-texte et pertinence</h2>
+            <h3 class="shadow">&gt; Quel est le truc ?</h3>
+          </header>
+          <div class="slide-content">
+            <h4>Valeur exacte / analysée</h4>
             <p>
-              Simple text w/ 4 img...
-              </p><div class="gallery-item" style="width: 26%">
-                <img src="./example_large.png" alt"exemple="" de="" screenshot"="">
-                <span>Legende de l'image</span>
-              </div>
-              <div class="gallery-item" style="width: 26%">
-                <img src="./example_large.png" alt"exemple="" de="" screenshot"="">
-                <span>Legende de l'image</span>
-              </div>
-              <div class="gallery-item" style="width: 20%">
-                <img src="./example_long.png" alt"exemple="" de="" screenshot"="">
-                <span>Legende de l'image</span>
-              </div>
-              <div class="gallery-item" style="width: 26%">
-                <img src="./example_large.png" alt"exemple="" de="" screenshot"="">
-                <span>Legende de l'image</span>
-              </div>
+              <pre>
 
+                GET /_search?q=2014              # 12 resultats
+                GET /_search?q=2014-09-15        # 12 resultats !
+                GET /_search?q=date:2014-09-20   # 1  resultat
+                GET /_search?q=date:2014         # 0  resultat !
+              </pre>
+            </p>
+          </div>
+        </section>
+        <section>
+          <header>
+            <h2>Recherche plein-texte et pertinence</h2>
+            <h3 class="shadow">&gt; Quel est le truc ?</h3>
+          </header>
+          <div class="slide-content">
+            <h4>Valeur exacte / analysée</h4>
+            <ol>
+              <li>Recherche de 2014 dans _all <strong>: 12</strong> </li>
+              <li>Recherche des valeurs 2014, 09 et 20 dans _all <strong>: 12</strong></li>
+              <li>Recherche de la valeur exacte 2014-09-20 dans date <strong>: 1</strong></li>
+              <li>Recherche de la valeur exacte 2014 dans date <strong>: 0</strong></li>
+            </ol>
+            <ul>
+              <li>_all est un champ analysé</li>
+              <li>date est un champ à valeur exacte</li>
+            </ul>
+          </div>
+        </section>
+      </section>
 
-            <p></p>
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <section>
+        <header>
+          <h2>Recherche plein-texte et pertinence</h2>
+          <h3 class="shadow">&gt; Quel est le truc ?</h3>
+        </header>
+        <div class="slide-content">
+          <h4>Recherche plein-texte</h4>
+            <div class="gallery-item" style="width: 100%">
+              <p><pre>curl -XGET "http://localhost:9200/_search" -d'
+{
+  "query": {
+    "match": {
+      "tweet": "elasticsearch is easy"
+    }
+  }
+}'
+                 </pre>
+                </p>
+            </div>
+        </div>
+      </section>
+      <section>
+      <header>
+        <h2>Recherche plein-texte et pertinence</h2>
+        <h3 class="shadow">&gt; Quel est le truc ?</h3>
+      </header>
+      <div class="slide-content">
+        <h4>Recherche plein texte</h4>
+          <div class="gallery-item" style="width: 100%">
+            <p><pre>...
+"hits": [
+  {
+    ...
+    "_score": 0.4794072,
+    "_source": {
+      ...
+      "tweet": "The Elasticsearch API is really easy to use",
+    ...
+  },
+    ...
+    "_score": 0.4082814,
+      "tweet": "Elasticsearch is built for the cloud, easy to scale",
+    ...
+    "_score": 0.22818159,
+      "tweet": "Elasticsearch surely is one of the hottest new NoSQL products",
+    ...
+    "_score": 0.11272853,
+      "tweet": "Elasticsearch means full text search has never been so easy",
+...
+               </pre>
+              </p>
+          </div>
+      </div>
+    </section>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Recherche plein-texte et pertinence</h2>
+          <h3 class="shadow">&gt; Quel est le truc ?</h3>
+        </header>
+        <div class="slide-content">
+          <h4>Pertinence</h4>
+          <ul>
+          <li>
+            <strong>_score</strong> : pertinence du résultat par rapport à la requête
+          </li>
+          <li>
+            3 facteurs pris en compte pour le calculer :
+          </li>
+          <ul>
+            <li><strong>Term frequency</strong> : nombre d'occurences dans le champ</li>
+            <li><strong>Inverse document frequency</strong> : inverse de la fréquence d'apparition dans l'index</li>
+            <li><strong>Field-length norm</strong> : Le terme a plus de poids s'il est présent dans un champ court</li>
+          </ul>
+        </ul>
+        </div>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section style="top: -319px; display: block;" class="divider future" hidden="">
+        <header>
+          <h2 class="shadow">Notions de base</h2>
+          <img class="cloud" src="./cloud.png" alt="">
+          <h3>Agrégations</h3>
+        </header>
+        <footer>
+          <img src="./communaute.png" alt="">
+        </footer>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <section>
+          <header>
+            <h2>Agrégations</h2>
+            <h3 class="shadow">&gt; Faites vos indicateurs !</h3>
+          </header>
+          <div class="slide-content">
+            <h4>Regroupement par terme</h4>
+            <p>
+              Les 4 termes les plus fréquemment rencontrés dans les tweets
+            </p>
+              <div class="gallery-item" style="width: 100%">
+                <p><pre>curl -XGET "http://localhost:9200/us,gb/tweet/_search" -d'
+  {
+    "size": 0,
+    "aggs": {
+      "hot term in tweet": {
+        "terms": {
+          "field": "tweet",
+          "size": 4
+        }
+      }
+    }
+  }'
+                   </pre>
+                  </p>
+              </div>
+          </div>
+        </section>
+        <section>
+          <header>
+            <h2>Agrégations</h2>
+            <h3 class="shadow">&gt; Faites vos indicateurs !</h3>
+          </header>
+          <div class="slide-content">
+            <h4>Regroupement par terme</h4>
+              <div class="gallery-item" style="width: 100%">
+                <p><pre>...
+"aggregations": {
+  "hot term in tweet": {
+    "doc_count_error_upper_bound": 0,
+    "sum_other_doc_count": 72,
+    "buckets": [
+      {
+        "key": "elasticsearch",
+        "doc_count": 7
+      },
+      {
+        "key": "is",
+        "doc_count": 5
+      },
+      {
+        "key": "the",
+        "doc_count": 5
+      },
+      {
+        "key": "i",
+        "doc_count": 4
+      }
+      ...
+                   </pre>
+                  </p>
+              </div>
           </div>
         </section>
 
-        <!--///////////////////////////////////////////-->
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <section>
+          <header>
+            <h2>Agrégations</h2>
+            <h3 class="shadow">&gt; Faites vos indicateurs !</h3>
+          </header>
+          <div class="slide-content">
+            <h4>Regroupement par terme</h4>
+            <p>
+              Séparation des tweets en 2 périodes avant et après le 20/09/2014
+            </p>
+              <div class="gallery-item" style="width: 100%">
+                <p><pre>curl -XGET "http://localhost:9200/us,gb/tweet/_search" -d'
+{
+  "size": 0,
+  "aggs": {
+    "Par date": {
+      "range": {
+        "field": "date",
+        "ranges": [
+          {
+            "to": "2014-09-20"
+          },
+          {
+            "from": "2014-09-20"
+          }
+        ]
+      }
+    }
+  }
+}'
+                   </pre>
+                  </p>
+              </div>
+          </div>
+        </section>
+        <section>
+          <header>
+            <h2>Agrégations</h2>
+            <h3 class="shadow">&gt; Faites vos indicateurs !</h3>
+          </header>
+          <div class="slide-content">
+            <h4>Regroupement par terme</h4>
+              <div class="gallery-item" style="width: 100%">
+                <p><pre>...
+"aggregations": {
+  "Par date": {
+    "buckets": [
+      {
+        "key": "*-2014-09-20T00:00:00.000Z",
+        "to": 1411171200000,
+        "to_as_string": "2014-09-20T00:00:00.000Z",
+        "doc_count": 7
+      },
+      {
+        "key": "2014-09-20T00:00:00.000Z-*",
+        "from": 1411171200000,
+        "from_as_string": "2014-09-20T00:00:00.000Z",
+        "doc_count": 5
+      }
+      ...
+                   </pre>
+                  </p>
+              </div>
+          </div>
+        </section>
+
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section style="top: -319px; display: block;" class="divider future" hidden="">
+        <header>
+          <h2 class="shadow">Notions de base</h2>
+          <img class="cloud" src="./cloud.png" alt="">
+          <h3>Conclusion</h3>
+        </header>
+        <footer>
+          <img src="./communaute.png" alt="">
+        </footer>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Conclusion</h2>
+          <h3 class="shadow">&gt; Même s'il reste beaucoup de choses à dire...</h3>
+        </header>
+        <div class="slide-content">
+          <ul>
+            <li>
+              <strong>The guide : </strong><br/><a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html" target="_blank">https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html</a>
+            </li>
+            <li>
+              Sense et kopf vous aideront à comprendre ce qu'il se passe
+            </li>
+            <li>
+              Demander de l'aide sur esup-utilisateurs@esup-portail.org
+            </li>
+        </ul>
+        </div>
+      </section>
+
+      <!--///////////////////////////////////////////-->
+
+      <section class="future" style="top: -305px; display: block;" hidden="">
+        <header>
+          <h2>Conclusion</h2>
+          <h3 class="shadow">&gt; Des questions ?</h3>
+        </header>
+        <div class="slide-content">
+          <p>
+            Merci de votre attention ! Des questions ?
+          </p>
+          <div class="gallery-item" style="width: 100%">
+            <img class="cloud" src="./img/questions.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+         <!--///////////////////////////////////////////-->
+
 
 
       </div>

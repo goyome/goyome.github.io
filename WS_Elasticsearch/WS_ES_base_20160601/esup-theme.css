@@ -1,8 +1,8 @@
 /**
- * ESUP default theme 
+ * ESUP default theme
  * @author Mathilde Guerin
  *
- * Main colors: 
+ * Main colors:
  *    - blue: #1d71b8;
  *    - pinkish-red: #e2007a;
  */
@@ -42,9 +42,6 @@ body,
   height: 2em;
   margin-top: -0.3em;
 }
-
-.esup .controls div.navigate-up,
-.esup .controls div.navigate-down { display: none; }
  
 .esup .progress { height: 0.3em; }
 
@@ -76,7 +73,7 @@ body,
   border-left-color: #F495C8;
 }
 
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
   .footer-left {
     top: 0.3em;
     bottom: auto;
@@ -93,7 +90,7 @@ body,
   margin: 0 auto;
 }
 
-.esup h2, .esup h3 { 
+.esup h2, .esup h3 {
   -webkit-hyphens: manual;
      -moz-hyphens: manual;
           hyphens: manual;
@@ -112,7 +109,7 @@ body,
 
 .esup ul li,.esup ol li {
   margin: 0.1em 0;
-  padding-left: 0.15em; 
+  padding-left: 0.15em;
 }
 .esup ul li {
   color: #e2007a;
@@ -252,7 +249,7 @@ body,
   -moz-border-radius: 0 0 0 100%;
   -webkit-border-radius: 0 0 0 100%;
 	width: 250px;
-	height: 250px; 
+	height: 250px;
 	right: 0;
 	top: 0;
 	position: absolute;
